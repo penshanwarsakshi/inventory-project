@@ -6,22 +6,26 @@ let inventory = [
 
 let sales = [0, 0, 0];
 
-// Display Table
+// Display Inventory
 function displayInventory(data = inventory) {
     let table = document.querySelector("#inventoryTable tbody");
     table.innerHTML = "";
 
     data.forEach(item => {
+        let lowStockClass = item.quantity < 20 ? "low-stock" : "";
+
         table.innerHTML += `
-        <tr>
+        <tr class="${lowStockClass}">
             <td>${item.id}</td>
             <td>${item.name}</td>
             <td>${item.quantity}</td>
         </tr>`;
     });
+
+    updateStats();
 }
 
-// Add Sale (Trigger Simulation)
+// Add Sale
 function addSale() {
     let id = parseInt(document.getElementById("productId").value);
     let qty = parseInt(document.getElementById("quantity").value);
@@ -29,12 +33,12 @@ function addSale() {
     let index = inventory.findIndex(p => p.id === id);
 
     if(index === -1) {
-        alert("Product not found");
+        alert("❌ Product not found");
         return;
     }
 
     if(qty > inventory[index].quantity) {
-        alert("Not enough stock");
+        alert("⚠️ Not enough stock");
         return;
     }
 
@@ -45,6 +49,18 @@ function addSale() {
     displayInventory();
 }
 
+// Add New Product
+function addProduct() {
+    let id = parseInt(document.getElementById("newId").value);
+    let name = document.getElementById("newName").value;
+    let qty = parseInt(document.getElementById("newQty").value);
+
+    inventory.push({ id, name, quantity: qty });
+    sales.push(0);
+
+    displayInventory();
+}
+
 // Search
 function searchProduct() {
     let val = document.getElementById("search").value.toLowerCase();
@@ -52,6 +68,14 @@ function searchProduct() {
         p.name.toLowerCase().includes(val)
     );
     displayInventory(filtered);
+}
+
+// Stats
+function updateStats() {
+    document.getElementById("totalProducts").innerText = inventory.length;
+
+    let totalSales = sales.reduce((a, b) => a + b, 0);
+    document.getElementById("totalSales").innerText = totalSales;
 }
 
 // Chart
@@ -72,6 +96,11 @@ function updateChart() {
             }]
         }
     });
+}
+
+// Dark Mode
+function toggleDarkMode() {
+    document.body.classList.toggle("dark");
 }
 
 // Load
