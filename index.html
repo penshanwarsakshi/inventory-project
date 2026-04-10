@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>📦 Inventory Dashboard</h1>
+</header>
+
+<div class="container">
+
+    <!-- Add Sale -->
+    <div class="card">
+        <h2>Add Sale</h2>
+        <input type="number" id="productId" placeholder="Product ID">
+        <input type="number" id="quantity" placeholder="Quantity Sold">
+        <button onclick="addSale()">Add Sale</button>
+    </div>
+
+    <!-- Search -->
+    <div class="card">
+        <h2>Search Product</h2>
+        <input type="text" id="search" onkeyup="searchProduct()" placeholder="Search...">
+    </div>
+
+    <!-- Table -->
+    <div class="card">
+        <h2>Inventory</h2>
+        <table id="inventoryTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Stock</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- Chart -->
+    <div class="card">
+        <h2>Sales Chart</h2>
+        <canvas id="chart"></canvas>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
