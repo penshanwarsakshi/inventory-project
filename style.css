@@ -1,16 +1,19 @@
 body {
     font-family: Arial;
     margin: 0;
-    background: #f4f6f9;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #333;
 }
 
+/* Header */
 header {
-    background: #2c3e50;
+    background: rgba(0,0,0,0.7);
     color: white;
     text-align: center;
     padding: 15px;
 }
 
+/* Container */
 .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -18,45 +21,67 @@ header {
     padding: 20px;
 }
 
+/* Cards */
 .card {
-    background: white;
+    background: rgba(255,255,255,0.95);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
+/* Inputs */
 input {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }
 
+/* Buttons */
 button {
     width: 100%;
     padding: 10px;
-    background: #3498db;
+    background: #ff7a18;
     color: white;
     border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
+button:hover {
+    background: #ff5500;
+}
+
+/* Table */
 table {
     width: 100%;
     border-collapse: collapse;
 }
 
-th, td {
+th {
+    background: #333;
+    color: white;
+}
+
+td, th {
     padding: 10px;
     text-align: center;
 }
 
-th {
-    background: #34495e;
-    color: white;
+/* Low stock */
+.low-stock {
+    background: #ffcccc;
+    color: red;
+    font-weight: bold;
 }
 
+/* Login */
 .login-box {
     width: 300px;
     margin: 100px auto;
     padding: 20px;
     background: white;
-    text-align: center;
+    border-radius: 10px;
 }
